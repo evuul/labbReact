@@ -1,0 +1,4 @@
+/* Minimal, neutral baseline so App.css controls look & feel */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; }
