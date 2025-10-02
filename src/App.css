@@ -95,6 +95,18 @@ body {
   border-color: #cbd5e1;
 }
 
+/* Code text */
+.code-text {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+.code-text span { white-space: pre-wrap; }
+
 /* Listan */
 .film-list {
   display: grid;
@@ -189,6 +201,7 @@ body {
 .theme-dark .mock-select, .theme-dark .mock-input { background: #0f172a; border-color: #334155; color: #94a3b8; }
 .theme-dark .mock-button { background: #e2e8f0; color: #0f172a; }
 .theme-dark .fav-badge { background: #ef4444; color: #fff; }
+.theme-dark .code-text { color: #e2e8f0; }
 
 /* Modal */
 .modal-backdrop {

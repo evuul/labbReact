@@ -26,7 +26,6 @@ const IconInfo = (props) => (
     <rect x="11" y="10.5" width="2" height="7" rx="1" fill="#0f172a"/>
   </svg>
 );
-
 const MockSearchBar = () => (
   <div className="mock-search">
     <div className="mock-select">Titel ▾</div>
@@ -76,6 +75,53 @@ const fallbacks = {
 
 const Tutorialview = () => {
   const [details, setDetails] = useState({});
+  const snippetSearch = [
+    "import Searchfield from './components/Searchfield';",
+    "import Filmlist from './components/Filmlist';",
+    '',
+    'const HomeView = ({ movies }) => (',
+    '  <>',
+    '    <Searchfield />',
+    '    <Filmlist movies={movies} />',
+    '  </>',
+    ');',
+  ];
+
+  const snippetDetails = [
+    "import { useParams } from 'react-router-dom';",
+    "import FilmDetails from './components/FilmDetails';",
+    '',
+    'const FilmDetailsRoute = () => {',
+    '  const { id } = useParams();',
+    '  return <FilmDetails movieId={id} />;',
+    '};',
+  ];
+
+  const snippetFavorite = [
+    "import { useFavorites } from './context/FavoritesContext';",
+    '',
+    'const FavoriteButton = ({ movie }) => {',
+    '  const { isFavorite, toggleFavorite } = useFavorites();',
+    '  const saved = isFavorite(movie.imdbID);',
+    '',
+    '  return (',
+    '    <button onClick={() => toggleFavorite(movie)}>',
+    "      {saved ? 'Ta bort favorit' : 'Lägg till favorit'}",
+    '    </button>',
+    '  );',
+    '};',
+  ];
+
+  const snippetList = [
+    "import Favorites from './components/Favorites';",
+    '',
+    'const FavoritesPage = () => (',
+    '  <section>',
+    "    <h2>Mina favoriter</h2>",
+    '    <Favorites />',
+    '  </section>',
+    ');',
+  ];
 
   useEffect(() => {
     const load = async () => {
@@ -117,6 +163,11 @@ const Tutorialview = () => {
           <div className="tutorial-illustration" aria-label="Exempel på sökfält">
             <MockSearchBar />
           </div>
+          <div className="code-text" aria-label="Kodexempel för Searchfield">
+            {snippetSearch.map((line, index) => (
+              <span key={`search-${index}`}>{line}</span>
+            ))}
+          </div>
         </article>
 
         <article className="tutorial-card">
@@ -136,6 +187,11 @@ const Tutorialview = () => {
               </div>
             </div>
           </div>
+          <div className="code-text" aria-label="Kodexempel för FilmDetails">
+            {snippetDetails.map((line, index) => (
+              <span key={`details-${index}`}>{line}</span>
+            ))}
+          </div>
         </article>
 
         <article className="tutorial-card">
@@ -150,6 +206,11 @@ const Tutorialview = () => {
               </div>
               <div className="mock-heart on" title="Favorit">❤</div>
             </div>
+          </div>
+          <div className="code-text" aria-label="Kodexempel för favoritknapp">
+            {snippetFavorite.map((line, index) => (
+              <span key={`favorite-${index}`}>{line}</span>
+            ))}
           </div>
         </article>
 
@@ -187,6 +248,11 @@ const Tutorialview = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="code-text" aria-label="Kodexempel för favoritlista">
+            {snippetList.map((line, index) => (
+              <span key={`list-${index}`}>{line}</span>
+            ))}
           </div>
         </article>
       </div>
